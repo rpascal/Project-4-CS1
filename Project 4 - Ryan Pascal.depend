@@ -1,0 +1,145 @@
+# depslib dependency file v1.0
+1449497899 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\main.cpp
+	<iostream>
+	<fstream>
+	<list>
+	<cmath>
+	"SharkObject.h"
+	"Shark.hpp"
+	"brit.hpp"
+	"PirateShip.hpp"
+	"BritObject.h"
+
+1449291758 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\constants.cpp
+
+1449291758 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\constants.cpp
+
+1449293602 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\shark.cpp
+
+1449443971 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\shark.cpp
+	"SharkObject.h"
+	<iostream>
+	<cmath>
+
+1449443965 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\shark.hpp
+
+1449294557 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\include\sharko.h
+
+1449294122 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\sharkobject.cpp
+
+1449294366 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\src\sharko.cpp
+	"SharkO.h"
+
+1449495842 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\include\sharkobject.h
+
+1449440770 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\src\sharkobject.cpp
+	"SharkObject.h"
+
+1449496000 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\include\shark.hpp
+	"SharkObject.h"
+	<iostream>
+	<cmath>
+
+1449498011 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\src\shark.cpp
+	"Shark.hpp"
+
+1449462484 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\src\pirateship.cpp
+	"PirateShip.hpp"
+
+1449462484 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\include\pirateship.hpp
+	<iostream>
+
+1449447552 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\src\britobject.cpp
+	"BritObject.h"
+
+1449496869 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\include\britobject.h
+
+1449497097 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\include\brit.hpp
+	"BritObject.h"
+	<iostream>
+	<cmath>
+
+1449497936 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal\src\brit.cpp
+	"brit.hpp"
+
+1449502342 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\src\brit.cpp
+	"../include/brit.hpp"
+
+1449502057 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\src\britobject.cpp
+	"../include/BritObject.h"
+
+1449502426 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\src\pirateship.cpp
+	"../include/PirateShip.hpp"
+
+1449502454 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\src\shark.cpp
+	"../include/Shark.hpp"
+
+1449502080 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\src\sharkobject.cpp
+	"../include/SharkObject.h"
+
+1449502031 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\main.cpp
+	<iostream>
+	<fstream>
+	<list>
+	<cmath>
+	"include/SharkObject.h"
+	"include/Shark.hpp"
+	"include/brit.hpp"
+	"include/PirateShip.hpp"
+	"include/BritObject.h"
+
+1449495842 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\include\sharkobject.h
+
+1449502729 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\include\shark.hpp
+	"SharkObject.h"
+	<iostream>
+	<cmath>
+
+1449502841 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\include\brit.hpp
+	"BritObject.h"
+	<iostream>
+	<cmath>
+
+1449496869 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\include\britobject.h
+
+1449502431 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - backup\include\pirateship.hpp
+	<iostream>
+
+1449502893 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\src\brit.cpp
+	"../include/brit.hpp"
+
+1449502841 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\include\brit.hpp
+	"BritObject.h"
+	<iostream>
+	<cmath>
+
+1449496869 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\include\britobject.h
+
+1449502057 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\src\britobject.cpp
+	"../include/BritObject.h"
+
+1449502426 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\src\pirateship.cpp
+	"../include/PirateShip.hpp"
+
+1449502431 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\include\pirateship.hpp
+	<iostream>
+
+1449502760 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\src\shark.cpp
+	"../include/Shark.hpp"
+
+1449502729 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\include\shark.hpp
+	"SharkObject.h"
+	<iostream>
+	<cmath>
+
+1449495842 c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\include\sharkobject.h
+
+1449502080 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\src\sharkobject.cpp
+	"../include/SharkObject.h"
+
+1449511846 source:c:\users\ryan\onedrive\public\akron\year 2\semester one\computer science 1\lab\workspace\project 4 - ryan pascal - one file\main.cpp
+	<iostream>
+	<fstream>
+	<list>
+	<cmath>
+
