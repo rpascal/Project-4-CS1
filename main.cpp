@@ -137,16 +137,7 @@ int distanceBetween(int x1, int y1, int x2,int y2){
     return xDistance + yDistance;
 }
 
-//void movingSharkExample(char ocean[ROWS][COLUMNS], int &newRowPosition, int &newColumnPosition){
-//    int numOfSharks = 3;
-//    int sharkRowPositions[numOfSharks] = {1,3,6};
-//    int sharkColumnPositions[numOfSharks] = {3,5,1};
-//
-//
-//}
-
 void updateMapPosition(char ocean[ROWS][COLUMNS], EnitityObject *brit){
-
     ocean[brit->GetrowPosition()][brit->GetcolumnPosition()] = ocean[brit->GetoldRowPosition()][brit->GetoldColumnPosition()];
     ocean[brit->GetoldRowPosition()][brit->GetoldColumnPosition()] = ' ';
 }
