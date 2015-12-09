@@ -1,6 +1,7 @@
 
 class EnitityObject
 {
+    //class to use for initializing each entity as
     public:
         EnitityObject();
         EnitityObject(int row , int col){rowPosition = row;columnPosition = col;}
@@ -47,24 +48,22 @@ int distanceBetween(int x1, int y1, int x2,int y2);
 void moveEnemy(char ocean[ROWS][COLUMNS], EnitityObject *entity, bool checkForIce);
 void updateEnemyPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enemy, bool checkIceCollision);
 void updateEnemyMapPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enemy);
+void removeSharksCollision(char ocean[ROWS][COLUMNS],list<EnitityObject*> removeSharks);
 
 int main(){
+    //main function where all the looping of the game is done
     char ocean[ROWS][COLUMNS];
     briefing();
     readMap(ocean);
     printMap(ocean);
-
     bool endOfGame = false;
     while(!endOfGame){
-
         pirateMove(ocean);
         endOfGame = checkCollisions(ocean);
-
         if(!endOfGame){
             updateEnemyPosition(ocean,sharkList,true);
             updateEnemyPosition(ocean,britList,false);
             endOfGame = checkCollisions(ocean);
-
             if(!endOfGame){
                 updateMapPosition(ocean, pirateShip);
                 updateEnemyMapPosition(ocean, sharkList);
@@ -72,16 +71,17 @@ int main(){
                 printMap(ocean);
             }
         }
-
     }
     return 0;
 }
 
 void briefing(){
+    //lay out the rules
     cout << "blah blah blah rules" << endl;
 }
 
 void readMap(char ocean[ROWS][COLUMNS]){
+    //read map into char array and set the symbols
     ifstream inFile("map.txt");
     if(!inFile){
         cout << "error" << endl;
@@ -123,7 +123,7 @@ void readMap(char ocean[ROWS][COLUMNS]){
     }
 
 void printMap(const char ocean[ROWS][COLUMNS]){
-
+    //print map to screen
     for(int i = 0; i < ROWS; i++){
         for(int j = 0; j < COLUMNS; j++){
             cout << ocean[i][j];
@@ -132,17 +132,21 @@ void printMap(const char ocean[ROWS][COLUMNS]){
     }
 }
 int distanceBetween(int x1, int y1, int x2,int y2){
+    //calculate the distance between two points
     int xDistance = abs(x2-x1);
     int yDistance = abs(y2-y1);
     return xDistance + yDistance;
 }
 
-void updateMapPosition(char ocean[ROWS][COLUMNS], EnitityObject *brit){
-    ocean[brit->GetrowPosition()][brit->GetcolumnPosition()] = ocean[brit->GetoldRowPosition()][brit->GetoldColumnPosition()];
-    ocean[brit->GetoldRowPosition()][brit->GetoldColumnPosition()] = ' ';
+void updateMapPosition(char ocean[ROWS][COLUMNS], EnitityObject *entity){
+    //update map
+    ocean[entity->GetrowPosition()][entity->GetcolumnPosition()] = ocean[entity->GetoldRowPosition()][entity->GetoldColumnPosition()];
+    ocean[entity->GetoldRowPosition()][entity->GetoldColumnPosition()] = ' ';
 }
 void findbestPathToTravel(char ocean[ROWS][COLUMNS],int &bestPathColumn, int &bestPathRow, bool checkForIce){
-
+    //the logic to determine what way the enemy should travel to get to the player in the fastest route
+    // the bool check for ice is to allow me to check for ice if need be but if its false the enemy
+    //just goes through the ice
     int const RCCI = 2, RCCO = 9;
     int rowColumnAdditions[RCCO][RCCI] = {{0,0},{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}};
     int smallestDistance = 99999;
@@ -169,21 +173,19 @@ void findbestPathToTravel(char ocean[ROWS][COLUMNS],int &bestPathColumn, int &be
     bestPathColumn = returningColumn;
 }
 void moveEnemy(char ocean[ROWS][COLUMNS], EnitityObject *entity, bool checkForIce){
-
-        //possibly add funcationality to remove sharks from list when they collide
-       int columnPosition = entity->GetcolumnPosition();
-       int rowPosition = entity->GetrowPosition();
-       int newColumnPosition = columnPosition;
-       int newRowPosition = rowPosition;
-       findbestPathToTravel(ocean, newColumnPosition, newRowPosition, checkForIce);
-       entity->SetoldColumnPosition(columnPosition);
-       entity->SetoldRowPosition(rowPosition);
-       entity->SetrowPosition(newRowPosition);
-       entity->SetcolumnPosition(newColumnPosition);
+   //move the enemy and set its new position
+   int columnPosition = entity->GetcolumnPosition();
+   int rowPosition = entity->GetrowPosition();
+   int newColumnPosition = columnPosition;
+   int newRowPosition = rowPosition;
+   findbestPathToTravel(ocean, newColumnPosition, newRowPosition, checkForIce);
+   entity->SetoldColumnPosition(columnPosition);
+   entity->SetoldRowPosition(rowPosition);
+   entity->SetrowPosition(newRowPosition);
+   entity->SetcolumnPosition(newColumnPosition);
 }
 void pirateMove(char ocean[ROWS][COLUMNS]){
-
-
+    //move the pirates position, by checking inputted check then updateing accordingly
     int newColumn = pirateShip->GetcolumnPosition(), newRow = pirateShip->GetrowPosition();
     char movementDiretion = 'h';
     while(!isCorrectMoveKey(movementDiretion)){
@@ -226,13 +228,9 @@ void pirateMove(char ocean[ROWS][COLUMNS]){
     pirateShip->SetoldRowPosition(pirateShip->GetrowPosition());
     pirateShip->SetcolumnPosition(newColumn);
     pirateShip->SetrowPosition(newRow);
-//    oldShipColumnPosition = shipColumnPosition;
-//    oldShipRowPosition = shipRowPosition;
-//    shipRowPosition = newRow;
-//    shipColumnPosition = newColumn;
-
 }
 bool isCorrectMoveKey(char c){
+    //check to see if inputted char is allowed
     char allowed[8] = {'q','w','e','a','d','z','x','c'};
     for(int i = 0; i < 8; i++){
         if(tolower(c) == allowed[i]){
@@ -241,9 +239,8 @@ bool isCorrectMoveKey(char c){
     }
     return false;
 }
-
 void updateEnemyPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enemy, bool checkIceCollision){
-
+    //loop over the list to update the position (before render)
     list <EnitityObject*>::iterator iEnemy;
     for (iEnemy = enemy.begin(); iEnemy != enemy.end(); ++iEnemy)
     {
@@ -252,7 +249,8 @@ void updateEnemyPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enemy, 
     }
 }
 void updateEnemyMapPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enemy){
-
+    //update the position on the map of the enemys
+    //need to loop over the list so each element can be updated
     list <EnitityObject*>::iterator iEnemy;
     for (iEnemy = enemy.begin(); iEnemy != enemy.end(); ++iEnemy)
     {
@@ -261,6 +259,7 @@ void updateEnemyMapPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enem
     }
 }
 bool checkCollisions(char ocean[ROWS][COLUMNS]){
+    //cehck collisions with all objetcs on the screen to determine what to do
     int shipRowPosition = pirateShip->GetrowPosition();
     int shipColumnPosition = pirateShip->GetcolumnPosition();
 
@@ -277,33 +276,7 @@ bool checkCollisions(char ocean[ROWS][COLUMNS]){
     list <EnitityObject*>::iterator iShark;
     list <EnitityObject*>::iterator iBrits;
     list<EnitityObject*> tempSharks;
-
-    for (iShark = sharkList.begin(); iShark != sharkList.end(); ++iShark)
-    {
-        EnitityObject *shark = dynamic_cast<EnitityObject*>(*iShark);
-        if(shark->GetcolumnPosition() == shipColumnPosition && shark->GetrowPosition() == shipRowPosition){
-            cout << "\n\n\n\n\n\n";
-            cout << "You have been eaten by a shark!" << endl;
-            return true;
-        }
-        for (iBrits = britList.begin(); iBrits != britList.end(); ++iBrits){
-             EnitityObject *brit = dynamic_cast<EnitityObject*>(*iBrits);
-            if(shark->GetcolumnPosition() == brit->GetcolumnPosition() && shark->GetrowPosition() == brit->GetrowPosition()){
-                tempSharks.push_back(shark);
-            }
-
-        }
-    }
-
-//    list <EnitityObject*>::iterator itempShark;
-//  //  sharkList.remove(tempSharks);
-//    for (itempShark = tempSharks.begin(); itempShark != tempSharks.end(); ++itempShark)
-//    {
-//        EnitityObject *shark = dynamic_cast<EnitityObject*>(*itempShark);
-//        sharkList.remove(shark);
-//        ocean[sha][]
-//    }
-
+    //loop over brits check for any collisions
     for (iBrits = britList.begin(); iBrits != britList.end(); ++iBrits)
     {
         EnitityObject *brit = dynamic_cast<EnitityObject*>(*iBrits);
@@ -313,5 +286,37 @@ bool checkCollisions(char ocean[ROWS][COLUMNS]){
             return true;
         }
     }
+
+    //loop over sharks check for any collisions
+    for (iShark = sharkList.begin(); iShark != sharkList.end(); ++iShark)
+    {
+        EnitityObject *shark = dynamic_cast<EnitityObject*>(*iShark);
+        if(shark->GetcolumnPosition() == shipColumnPosition && shark->GetrowPosition() == shipRowPosition){
+            cout << "\n\n\n\n\n\n";
+            cout << "You have been eaten by a shark!" << endl;
+            return true;
+        }
+
+        for (iBrits = britList.begin(); iBrits != britList.end(); ++iBrits){
+             EnitityObject *brit = dynamic_cast<EnitityObject*>(*iBrits);
+            if(shark->GetcolumnPosition() == brit->GetcolumnPosition() && shark->GetrowPosition() == brit->GetrowPosition()){
+                tempSharks.push_back(shark);
+            }
+
+        }
+    }
+
+    removeSharksCollision(ocean, tempSharks);
     return false;
+}
+void removeSharksCollision(char ocean[ROWS][COLUMNS], list<EnitityObject*> removeSharks){
+    //remove sharks from shark list in case of collision
+    list <EnitityObject*>::iterator itempShark;
+    for (itempShark = removeSharks.begin(); itempShark != removeSharks.end(); ++itempShark)
+    {
+        EnitityObject *shark = dynamic_cast<EnitityObject*>(*itempShark);
+        sharkList.remove(shark);
+        if(ocean[shark->GetoldRowPosition()][shark->GetoldColumnPosition()] != britSymbol)
+        ocean[shark->GetoldRowPosition()][shark->GetoldColumnPosition()] = ' ';
+    }
 }
