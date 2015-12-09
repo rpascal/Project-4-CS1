@@ -25,6 +25,9 @@ class EnitityObject
 #include <fstream>
 #include <list>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
 
 using namespace std;
 
@@ -49,12 +52,16 @@ void moveEnemy(char ocean[ROWS][COLUMNS], EnitityObject *entity, bool checkForIc
 void updateEnemyPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enemy, bool checkIceCollision);
 void updateEnemyMapPosition(char ocean[ROWS][COLUMNS], list<EnitityObject*> enemy);
 void removeSharksCollision(char ocean[ROWS][COLUMNS],list<EnitityObject*> removeSharks);
-
+void mapRandomizer( char randOcean[ROWS][COLUMNS]);
 int main(){
     //main function where all the looping of the game is done
+
+    //mapRandomizer();
+
     char ocean[ROWS][COLUMNS];
     briefing();
-    readMap(ocean);
+    //readMap(ocean);
+    mapRandomizer(ocean);
     printMap(ocean);
     bool endOfGame = false;
     while(!endOfGame){
@@ -74,6 +81,77 @@ int main(){
     }
     return 0;
 }
+
+void randomSymbolsOnMap( vector<int> &row, vector<int> &column, char ocean[ROWS][COLUMNS],int numElements, char symbol){
+    srand(static_cast <unsigned int> (time(0)));
+    for(int i = 0; i < numElements; i++){
+        int randomIndexRow = rand() % row.size();
+        ocean[row[randomIndexRow]][column[randomIndexRow]] = symbol;
+        row.erase(row.begin() + randomIndexRow);
+        column.erase(column.begin() + randomIndexRow);
+    }
+}
+
+void mapRandomizer(char randOcean[ROWS][COLUMNS]){
+    int sharkNum = 2;
+    int britnum = 1;
+    int iceNum = 12;
+    vector<int> openRows;
+    vector<int> openColums;
+    vector<int> borderRows;
+    vector<int> borderColumns;
+    srand(static_cast <unsigned int> (time(0)));
+
+    for(int i = 0; i < ROWS; i++){
+        for(int j = 0; j < COLUMNS; j++){
+            if(i == 0 || i == (ROWS-1) || j == 0 || j == (COLUMNS-1)){
+                randOcean[i][j] = iceSymbol;
+                borderColumns.push_back(j);
+                borderRows.push_back(i);
+            }else{
+                randOcean[i][j] = ' ';
+                openColums.push_back(j);
+                openRows.push_back(i);
+            }
+        }
+    }
+
+    for(int i = 0; i < britnum; i++){
+        int randomIndexRow = rand() % openRows.size();
+        randOcean[openRows[randomIndexRow]][openColums[randomIndexRow]] = britSymbol;
+         britList.push_back(new EnitityObject(openRows[randomIndexRow],openColums[randomIndexRow]));
+        openRows.erase(openRows.begin() + randomIndexRow);
+        openColums.erase(openColums.begin() + randomIndexRow);
+    }
+     for(int i = 0; i < sharkNum; i++){
+        int randomIndexRow = rand() % openRows.size();
+        randOcean[openRows[randomIndexRow]][openColums[randomIndexRow]] = sharkSymbol;
+        sharkList.push_back(new EnitityObject(openRows[randomIndexRow],openColums[randomIndexRow]));
+        openRows.erase(openRows.begin() + randomIndexRow);
+        openColums.erase(openColums.begin() + randomIndexRow);
+    }
+    for(int i = 0; i < iceNum; i++){
+        int randomIndexRow = rand() % openRows.size();
+        randOcean[openRows[randomIndexRow]][openColums[randomIndexRow]] = iceSymbol;
+        openRows.erase(openRows.begin() + randomIndexRow);
+        openColums.erase(openColums.begin() + randomIndexRow);
+    }
+    int randomIndexRow = rand() % openRows.size();
+    randOcean[openRows[randomIndexRow]][openColums[randomIndexRow]] = pirateShipSymbol;
+    pirateShip = new EnitityObject(openRows[randomIndexRow],openColums[randomIndexRow]);
+    openRows.erase(openRows.begin() + randomIndexRow);
+    openColums.erase(openColums.begin() + randomIndexRow);
+
+    randomIndexRow = rand() % borderRows.size();
+    randOcean[borderRows[randomIndexRow]][borderColumns[randomIndexRow]] = exitSymbol;
+    borderRows.erase(borderRows.begin() + randomIndexRow);
+    borderColumns.erase(borderColumns.begin() + randomIndexRow);
+
+    for(int i = 0; i < openRows.size(); i++){
+         randOcean[openRows[i]][openColums[i]] = ' ';
+    }
+}
+
 
 void briefing(){
     //lay out the rules
